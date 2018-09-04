@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>果园测试</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <style type="text/css">
+        html,body{
+            margin:0;
+            padding:0;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        #dd{
+            width: 375px;
+            height: 667px;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.1/pixi.min.js"></script>
+</head>
+<body>
+    <div id="dd"></div>
+</body>
+<script>
+    //添加画布
+    var app = new PIXI.Application(750, 1334, {backgroundColor : 0x1099bb});
+    app.view.style.width = "375px"
+    app.view.style.height = "667px"
+    document.getElementById("dd").appendChild(app.view);
+    //背景图校验
+    var bunny = PIXI.Sprite.fromImage('/images/bg/bg4.png');
+    bunny.width = "750"
+    bunny.height = "1334"
+    app.stage.addChild(bunny);
+    //商城链接
+    var bunny = PIXI.Sprite.fromImage('/images/lefttop/ad0828_1.png');
+    bunny.x = 8*app.screen.width/10
+    bunny.y = app.screen.height/16;
+    app.stage.addChild(bunny);
+
+    var bunny2 = PIXI.Sprite.fromImage('/images/lefttop/ad0828_2.png');
+    bunny2.x = 8*app.screen.width/10
+    bunny2.y = app.screen.height/16;
+    bunny2.visible = false;
+    app.stage.addChild(bunny2);
+    setInterval(function fun(){
+        if(bunny.visible){
+            bunny.visible = false;
+            bunny2.visible = true;
+        }else{
+            bunny.visible = true;
+            bunny2.visible = false;
+        }
+    },500)
+    //福袋
+    var noonNightIcon = PIXI.Sprite.fromImage('/images/leftcenter/noonNightIcon.png');
+    noonNightIcon.x = 8*app.screen.width/10
+    noonNightIcon.y = app.screen.height/6;
+    app.stage.addChild(noonNightIcon);
+
+
+    //领取
+    var requiregift = PIXI.Sprite.fromImage('/images/requiregift/highWaterIcon_v3.png');
+    requiregift.x = 8*app.screen.width/9.1
+    requiregift.y = app.screen.height/2;
+    requiregift.anchor.set(0.5);
+    app.stage.addChild(requiregift);
+
+    //福利数目
+    var text = new PIXI.Text("50滴水", {fontSize:'24px', fill: 'white', align: 'left' });
+    text.x = 8*app.screen.width/9.1
+    text.y = app.screen.height/1.94;
+    text.anchor.set(0.5);
+    app.stage.addChild(text);
+    var isScale = false;
+    setInterval(function fun(){
+        if(!isScale){
+            requiregift.scale.x *= 1.2;
+            requiregift.scale.y *= 1.2;
+            text.scale.x *= 1.2;
+            text.scale.y *= 1.2;
+            isScale = true;
+        }else{
+            requiregift.scale.x /= 1.2;
+            requiregift.scale.y /= 1.2;
+            text.scale.x /= 1.2;
+            text.scale.y /= 1.2;
+            isScale = false;
+        }
+    },500)
+
+    //下载福利
+    var loadGift = PIXI.Sprite.fromImage('/images/loadGift/downloadMissionIcon.png');
+    loadGift.x = 8*app.screen.width/9.1
+    loadGift.y = app.screen.height/2.8;
+    loadGift.anchor.set(0.5);
+    app.stage.addChild(loadGift);
+    var loadGifttext = new PIXI.Text("200滴水", {fontSize:'24px', fill: 'white', align: 'left' });
+    loadGifttext.x = 8*app.screen.width/9.1
+    loadGifttext.y = app.screen.height/2.63;
+    loadGifttext.anchor.set(0.5);
+    app.stage.addChild(loadGifttext);
+
+    //浇水过程
+    var water1 = PIXI.Sprite.fromImage('/images/water/water1_v2.png');
+    water1.x = 8*app.screen.width/11;
+    water1.y = app.screen.height/1.5;
+    water1.anchor.set(0.5);
+    water1.visible = false;
+    app.stage.addChild(water1);
+
+    var water2 = PIXI.Sprite.fromImage('/images/water/water2_v2.png');
+    water2.x = 8*app.screen.width/13
+    water2.y = app.screen.height/2;
+    water2.anchor.set(0.5);
+    water2.visible = false;
+    app.stage.addChild(water2);
+
+    var water3 = PIXI.Sprite.fromImage('/images/water/water3_v2.png');
+    water3.x = 8*app.screen.width/13
+    water3.y = app.screen.height/2;
+    water3.anchor.set(0.5);
+    water3.visible = false;
+    app.stage.addChild(water3);
+
+
+    var water4 = PIXI.Sprite.fromImage('/images/water/water4_v2.png');
+    water4.x = 8*app.screen.width/13
+    water4.y = app.screen.height/2;
+    water4.anchor.set(0.5);
+    water4.visible = false;
+    app.stage.addChild(water4);
+
+    var water5 = PIXI.Sprite.fromImage('/images/water/water5_v2.png');
+    water5.x = 8*app.screen.width/13
+    water5.y = app.screen.height/2;
+    water5.anchor.set(0.5);
+    water5.visible = false;
+    app.stage.addChild(water5);
+
+    var water6 = PIXI.Sprite.fromImage('/images/water/water6_v2.png');
+    water6.x = 8*app.screen.width/13
+    water6.y = app.screen.height/2;
+    water6.anchor.set(0.5);
+    water6.visible = false;
+    app.stage.addChild(water6);
+
+    var water7 = PIXI.Sprite.fromImage('/images/water/water7_v2.png');
+    water7.x = 8*app.screen.width/13
+    water7.y = app.screen.height/2;
+    water7.anchor.set(0.5);
+    water7.visible = false;
+    app.stage.addChild(water7);
+
+    var water8 = PIXI.Sprite.fromImage('/images/water/water8_v2.png');
+    water8.x = 8*app.screen.width/13;
+    water8.y = app.screen.height/2;
+    water8.anchor.set(0.5);
+    water8.visible = false;
+    app.stage.addChild(water8);
+
+    var water9 = PIXI.Sprite.fromImage('/images/water/water9_v2.png');
+    water9.x = 8*app.screen.width/13
+    water9.y = app.screen.height/2;
+    water9.anchor.set(0.5);
+    water9.visible = false;
+    app.stage.addChild(water9);
+
+    var water10 = PIXI.Sprite.fromImage('/images/water/water10_v2.png');
+    water10.x = 8*app.screen.width/13
+    water10.y = app.screen.height/2;
+    water10.anchor.set(0.5);
+    water10.visible = false;
+    app.stage.addChild(water10);
+
+    var water11 = PIXI.Sprite.fromImage('/images/water/water11_v2.png');
+    water11.x = 8*app.screen.width/13
+    water11.y = app.screen.height/2;
+    water11.anchor.set(0.5);
+    water11.visible = false;
+    app.stage.addChild(water11);
+
+    var water12 = PIXI.Sprite.fromImage('/images/water/water12_v2.png');
+    water12.x = 8*app.screen.width/13
+    water12.y = app.screen.height/2;
+    water12.anchor.set(0.5);
+    water12.visible = false;
+    app.stage.addChild(water12);
+
+    //水壶底座
+    var waterBottle = PIXI.Sprite.fromImage('/images/waterContain/wateringBottleForbid_v2.png');
+    waterBottle.x = 8*app.screen.width/9.2
+    waterBottle.y = app.screen.height/1.3;
+    waterBottle.anchor.set(0.5);
+    app.stage.addChild(waterBottle);
+
+    var waterHas = PIXI.Sprite.fromImage('/images/waterContain/wateringBottle_v4.png');
+    waterHas.x = 8*app.screen.width/9.22
+    waterHas.y = app.screen.height/1.33;
+    waterHas.anchor.set(0.5);
+    waterHas.interactive = true;
+    waterHas.buttonMode = true;
+    waterHas.on('pointerdown', onClick);
+    app.stage.addChild(waterHas);
+    //浇水过程
+    function onClick () {
+        var isStart  = 1 ;
+        var isEnd = setInterval(function fun(){
+            waterHas.visible = false;
+            if(isStart == 13){
+                window['water'+(isStart-1)].visible = false;
+                waterHas.visible = true;
+                clearInterval(isEnd);
+                return false;
+            }
+            if(isStart == 1){
+                    window['water'+isStart].visible = true;
+            }else{
+                    window['water'+(isStart-1)].visible = false;
+                    window['water'+isStart].visible = true;
+             }
+            isStart++;
+        },300)
+        // water1.visible = true
+    }
+    //云的移动
+    var cloudLeft = PIXI.Sprite.fromImage('/images/cloud/cloudLeft_v2.png');
+    cloudLeft.x = 0
+    cloudLeft.y = app.screen.height/9;
+    cloudLeft.anchor.set(0.5);
+    app.stage.addChild(cloudLeft);
+    var cloudRight = PIXI.Sprite.fromImage('/images/cloud/cloudRight_v2.png');
+    cloudRight.x = app.screen.width
+    cloudRight.y = app.screen.height/8;
+    cloudRight.anchor.set(0.5)
+    cloudRight.interactive = true;
+    cloudRight.buttonMode = true;
+    app.stage.addChild(cloudRight);
+
+    //云的移动
+    var leftInit  = 0 ;
+    var rightInit = app.screen.width ;
+    var speed = 1;
+    setInterval(function fun(){
+        if(speed <= rightInit){
+            cloudLeft.x = speed;
+            cloudRight.x = rightInit - speed;
+        }else{
+            cloudLeft.x = 0;
+            cloudRight.x = 0;
+            speed = 1
+        }
+        speed += 1;
+    },60)
+    //天气
+    var sunStatus = PIXI.Sprite.fromImage('/images/sun/absorbBg_v2.png');
+    sunStatus.x = app.screen.width
+    sunStatus.y = app.screen.height/30;
+    sunStatus.anchor.set(0.5)
+    sunStatus.interactive = true;
+    sunStatus.buttonMode = true;
+    app.stage.addChild(sunStatus);
+    var sunLight = PIXI.Sprite.fromImage('/images/light/light_v3.png');
+    sunLight.x = app.screen.width
+    sunLight.y = app.screen.height/30;
+    sunLight.anchor.set(0.5)
+    sunLight.interactive = true;
+    sunLight.buttonMode = true;
+    app.stage.addChild(sunLight);
+
+
+
+</script>
+</html>
